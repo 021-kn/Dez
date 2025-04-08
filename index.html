@@ -24,10 +24,18 @@
             background-color: #f4f4f4;
             font-family: Arial, sans-serif;
             overflow: hidden;
+            text-align: center;
+            padding: 20px;
         }
         #contador {
-            font-size: 50px;
-            margin: 20px;
+            font-size: 60px;
+            margin: 10px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #mensagem {
+            font-size: 20px;
+            max-width: 90%;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
         }
@@ -81,18 +89,39 @@
 <body>
     <button id="start-btn" onclick="iniciarContagem()">Iniciar</button>
     <div id="contador">10</div>
+    <div id="mensagem"></div>
+
     <div id="foto-fogos">
         <img src="Design sem nome.jpg" alt="Foto da pessoa especial">
         <h2>🎆 BOOM! Você chegou ao 0! 🎆</h2>
         <h2>ACENDE O FOGO AÍ 🙄</h2>
     </div>
+
     <script>
+        const mensagens = {
+            10: "10 segundos te aguentando já é demais.",
+            9: "9 ideias ruins por minuto... tá superando.",
+            8: "8 vezes que tentei te entender. Desisti na primeira.",
+            7: "7 dias na semana e você causando em todos.",
+            6: "6 memes seus que não tiveram graça (como sempre).",
+            5: "5 vezes que revirei os olhos hoje (adivinha por quê).",
+            4: "4 crises existenciais causadas por uma certa pessoa... 👀",
+            3: "3 motivos pra te bloquear... mas tô sem tempo.",
+            2: "2 segundos de paz até você aparecer.",
+            1: "1 pessoa que me tira do sério fácil demais.",
+            0: "0 chances de você ser normal. Parabéns."
+        };
+
         function iniciarContagem() {
             let contador = document.getElementById("contador");
+            let mensagem = document.getElementById("mensagem");
             let botao = document.getElementById("start-btn");
             let numero = 10;
+
             contador.innerText = numero;
             contador.style.opacity = 1;
+            mensagem.innerText = mensagens[numero];
+            mensagem.style.opacity = 1;
             botao.style.display = "none";
 
             let intervalo = setInterval(() => {
@@ -103,8 +132,9 @@
                     criarFogos();
                 } else {
                     contador.innerText = numero;
+                    mensagem.innerText = mensagens[numero];
                 }
-            }, 500);
+            }, 1500);
         }
 
         function criarFogos() {
