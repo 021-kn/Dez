@@ -80,32 +80,33 @@
 </head>
 <body>
     <button id="start-btn" onclick="iniciarContagem()">Iniciar</button>
-    <div id="contador">1</div>
-    <div id="foto-fogos" style="display: none;">
+    <div id="contador">10</div>
+    <div id="foto-fogos">
         <img src="Design sem nome.jpg" alt="Foto da pessoa especial">
-        <h2>🎆 BOOM! Você chegou ao 10!🎆 </h2>
-        <h2> ACENDE O FOGO AÍ 🙄</h2>
+        <h2>🎆 BOOM! Você chegou ao 0! Feliz novo ano🎆</h2>
+        <h2>ACENDE O FOGO AÍ 🙄</h2>
     </div>
     <script>
         function iniciarContagem() {
             let contador = document.getElementById("contador");
             let botao = document.getElementById("start-btn");
-            let numero = 1;
+            let numero = 10;
+            contador.innerText = numero;
             contador.style.opacity = 1;
             botao.style.display = "none";
-            
+
             let intervalo = setInterval(() => {
-                if (numero >= 10) {
+                numero--;
+                if (numero < 0) {
                     clearInterval(intervalo);
                     document.getElementById("foto-fogos").style.display = "flex";
                     criarFogos();
                 } else {
-                    numero++;
                     contador.innerText = numero;
                 }
             }, 500);
         }
-        
+
         function criarFogos() {
             for (let i = 0; i < 15; i++) {
                 let fogo = document.createElement("div");
