@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contador Interativo</title>
 
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TJ71N9VG7G"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -131,11 +130,16 @@
                     clearInterval(intervalo);
                     document.getElementById("foto-fogos").style.display = "flex";
                     criarFogos();
+
+                    // Some com a mensagem final depois de 3 segundos
+                    setTimeout(() => {
+                        mensagem.style.opacity = 0;
+                    }, 3000);
                 } else {
                     contador.innerText = numero;
                     mensagem.innerText = mensagens[numero];
                 }
-            }, 3000); // <- tempo aumentado pra 3 segundos
+            }, 3000);
         }
 
         function criarFogos() {
